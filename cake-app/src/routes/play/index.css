@@ -1,0 +1,25 @@
+section {
+    display: flex;
+    width: 90vw;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    margin: auto;
+}
+
+.section img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+p {
+    font-weight: bold;
+  }
+   
+  form {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
