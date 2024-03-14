@@ -19,5 +19,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci && npx playwright install --with-deps && playwright test --reporter=list
+      - run: npm ci && npx playwright install --with-deps && npm run test.e2e
         working-directory: ./cake-app
