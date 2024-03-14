@@ -1,4 +1,4 @@
-name: PR Workflow- Is it (F)ake?! app validation
+name: Push Workflow- Is it (F)ake?! app validation
 on:
   push:
     branches: [main, master]
@@ -10,8 +10,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm run build
+      - run: npm ci && npm run build
         working-directory: ./cake-app
   test:
     runs-on: ubuntu-latest
@@ -20,8 +19,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm run test.e2e
+      - run: npm ci && npm run test.e2e
         working-directory: ./cake-app
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
