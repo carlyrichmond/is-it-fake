@@ -40,5 +40,6 @@ lerna-debug.log*
 .yarn/*
 !.yarn/releases
 
-# Netlify
-.netlify
+# Qwik
+src/routes/demo
+src/components/starter
