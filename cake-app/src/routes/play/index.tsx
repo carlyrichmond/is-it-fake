@@ -4,11 +4,11 @@ import { Image } from '@unpic/qwik';
 import styles from "./index.css?inline";
 
 export const useImage = routeLoader$(async () => {
-    const response = await fetch('https://www.tastingtable.com/img/gallery/netflixs-bizarre-new-baking-show-is-it-cake-was-inspired-by-a-viral-meme/intro-1646847618.webp', {
+    /*const response = await fetch('https://www.tastingtable.com/img/gallery/netflixs-bizarre-new-baking-show-is-it-cake-was-inspired-by-a-viral-meme/intro-1646847618.webp', {
         headers: { Accept: 'application/json' },
     });
     const imageBlob = await response.blob();
-    //const url = URL.createObjectURL(imageBlob);
+    //const url = URL.createObjectURL(imageBlob);*/
 
     return { url: 'https://www.tastingtable.com/img/gallery/netflixs-bizarre-new-baking-show-is-it-cake-was-inspired-by-a-viral-meme/intro-1646847618.webp' };
 });
