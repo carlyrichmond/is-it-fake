@@ -1,0 +1,31 @@
+name: PR Workflow- Elastic Synthetics With Svelte Replicator
+on:
+  pull_request:
+    branches: [main, master]
+jobs:  
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm run build
+        working-directory: ./cake-app
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm run test.e2e
+        working-directory: ./cake-app
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          junit_files: '**/junit-*.xml'
+          check_name: E2E tests

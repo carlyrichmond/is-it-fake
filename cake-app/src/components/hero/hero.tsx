@@ -9,7 +9,7 @@ export default component$(() => {
       <h1>
         Is it <span class="highlight">(F)ake</span>?!
       </h1>
-      <p>Beat the models and find the cake!</p>
+      <p data-testid="game-description">Beat the models and find the cake!</p>
       <div class={styles["button-group"]}>
         <button
           onClick$={async () => {

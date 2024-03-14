@@ -30,10 +30,10 @@ export default component$(() => {
                 Is it <span class="highlight">(F)ake</span>?!
             </h1>
 
-            <Image src={imageUrlSignal.value.url}/>
+            <Image data-testid="cake-image" src={imageUrlSignal.value.url} width="90vw" height="auto"/>
             <Form action={isItCakeAction}>
-                <button name="vote" value="cake">Cake 👍</button>
-                <button name="vote" value="not-cake">Not Cake 👎</button>
+                <button data-testid="cake-button" name="vote" value="cake">Cake 👍</button>
+                <button data-testid="not-cake-button" name="vote" value="not-cake">Not Cake 👎</button>
             </Form>
         </section>
     );

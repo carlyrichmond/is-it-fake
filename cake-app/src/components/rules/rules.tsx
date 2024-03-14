@@ -21,13 +21,14 @@ export default component$(() => {
 
   return (
     <div class="container container-purple container-center">
-      <h2>
+      <h2 data-testid="rules-title">
         How to
         <span class="highlight"> play</span>!
       </h2>
       <div class={styles.gettingstarted}>
         <div
           class={styles.intro}
+          data-testid="rules-step-message"
           dangerouslySetInnerHTML={
             GETTING_STARTED_STEPS[gettingStartedStep.value].message
           }
@@ -40,12 +41,13 @@ export default component$(() => {
         />
       </div>
       {gettingStartedStep.value + 1 < GETTING_STARTED_STEPS.length ? (
-        <button class="button-dark" onClick$={() => gettingStartedStep.value++}>
+        <button data-testid="next-step-button" class="button-dark" onClick$={() => gettingStartedStep.value++}>
           Continue with Step {gettingStartedStep.value + 2} /{""}
           {GETTING_STARTED_STEPS.length}
         </button>
       ) : (
         <button
+          data-testid="restart-button"
           class="button-dark"
           onClick$={() => (gettingStartedStep.value = 0)}
         >
