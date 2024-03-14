@@ -1,4 +1,4 @@
-name: PR Workflow- Elastic Synthetics With Svelte Replicator
+name: PR Workflow- Is it (F)ake?! app validation
 on:
   pull_request:
     branches: [main, master]
