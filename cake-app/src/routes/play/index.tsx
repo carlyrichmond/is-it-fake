@@ -19,7 +19,7 @@ export const useCakeVoteAction = routeAction$((props) => {
 });
 
 export default component$(() => {
-    const dadJokeSignal = useImage();
+    const imageSignal = useImage();
     const isItCakeAction = useCakeVoteAction();
 
     useStylesScoped$(styles);
@@ -30,7 +30,7 @@ export default component$(() => {
                 Is it <span class="highlight">(F)ake</span>?!
             </h1>
 
-            <Image src={dadJokeSignal.value.url}/>
+            <Image src={imageSignal.value.url}/>
             <Form action={isItCakeAction}>
                 <button name="vote" value="cake">Cake 👍</button>
                 <button name="vote" value="not-cake">Not Cake 👎</button>
