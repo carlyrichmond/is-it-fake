@@ -16,7 +16,7 @@ export const GETTING_STARTED_STEPS = [
   }
 ];
 
-export default component$(() => {
+export const Rules = component$(() => {
   const gettingStartedStep = useSignal(0);
 
   return (

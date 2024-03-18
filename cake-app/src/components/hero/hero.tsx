@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import DuckCake from "../../media/header-duck-cake.jpeg?jsx";
 import styles from "./hero.module.css";
 
-export default component$(() => {
+export const Hero = component$(() => {
   return (
     <div class={["container", styles.hero]}>
       <DuckCake class={styles["hero-image"]} alt="Image duck cake" />

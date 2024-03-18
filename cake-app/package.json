@@ -26,6 +26,8 @@
     "preview": "qwik build preview && vite preview --open",
     "start": "vite --open --mode ssr",
     "test.e2e": "playwright test",
+    "test.unit": "vitest components",
+    "test.unit.ui": "vitest --ui components",
     "qwik": "qwik"
   },
   "devDependencies": {
@@ -37,6 +39,8 @@
     "@types/node": "^20.11.24",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
+    "@vitest/coverage-v8": "^1.3.1",
+    "@vitest/ui": "^0.34.6",
     "eslint": "^8.57.0",
     "eslint-plugin-qwik": "^1.5.1",
     "netlify-cli": "^15.0.0",
@@ -44,7 +48,8 @@
     "typescript": "5.3.3",
     "undici": "*",
     "vite": "^5.1.4",
-    "vite-tsconfig-paths": "^4.2.1"
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "^0.34.6"
   },
   "dependencies": {
     "@unpic/qwik": "^0.0.44"

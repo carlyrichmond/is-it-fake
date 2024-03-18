@@ -21,3 +21,5 @@ jobs:
           node-version: 18
       - run: npm ci && npx playwright install --with-deps && npm run test.e2e
         working-directory: ./cake-app
+      - run: npm ci && npm run test.unit
+        working-directory: ./cake-app
