@@ -7,18 +7,17 @@
     <link rel="stylesheet" href="./public/css/style.css">
   </head>  
   <body>
-    <h1>Multiple object detection using pre trained model in TensorFlow.js</h1>
+    <h1>
+      Is it <span class="highlight">(F)ake</span>?!
+    </h1>
 
-    <p>Wait for the model to load before clicking the button to enable the webcam - at which point it will become visible to use.</p>
+    <h2>Model Playground</h2>
     
-    <section id="demos" class="invisible">
+    <p id="loading-message">Loading...</p>
 
-      <p>Hold some objects up close to your webcam to get a real-time classification! When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left of your window)</p>
-      
-      <div id="liveView" class="camView">
-        <button id="webcamButton">Enable Webcam</button>
-        <video id="webcam" autoplay muted width="640" height="480"></video>
-      </div>
+    <section id="demos" class="hidden">
+
+      <p>Check out each model to see if they can find the cake</p>
 
       <div id="imageView" class="imageView">
         <img id="cake-image" alt="cupcakes" src="./public/images/cupcakes.jpg"></img>
