@@ -1,6 +1,10 @@
 body {
   margin: 2em;
   background-color: #151934;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 html {
@@ -66,7 +70,7 @@ h3 {
 
 p {
     color: white;
-    margin: auto;
+    text-align: center;
 }
 
 section {
@@ -76,6 +80,13 @@ section {
 
 .hidden {
   display: none;
+}
+
+#loading-message {
+  font-size: 3rem;
+  color: #ac7ff4;
+
+  margin-top: 3rem;
 }
 
 .imageView {
