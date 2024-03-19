@@ -17,8 +17,8 @@ if (getUserMediaSupported()) {
 } else {
   console.warn('getUserMedia() is not supported by your browser');
 }
-  
-  // Enable the live webcam view and start classification.
+
+// Enable the live webcam view and start classification.
 function enableCam(event) {
   // Only continue if the COCO-SSD has finished loading.
   if (!model) {
@@ -28,7 +28,7 @@ function enableCam(event) {
   // Hide the button once clicked.
   event.target.classList.add('removed');  
   
-  // getUserMedia parameters to force video but not audio.
+  // getUsermedia parameters to force video but not audio.
   const constraints = {
     video: true
   };
@@ -96,3 +96,4 @@ function predictWebcam() {
     window.requestAnimationFrame(predictWebcam);
   });
 }
+
