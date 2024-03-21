@@ -33,6 +33,13 @@ export const Header = component$(() => {
               GitHub
             </a>
           </li>
+          <li>
+            <a
+              href="/playground"
+              target="_blank">
+              Model Playground
+            </a>
+          </li>
         </ul>
       </div>
     </header>
