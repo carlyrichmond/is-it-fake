@@ -7,7 +7,6 @@ import { qwikVite } from "@builder.io/qwik/optimizer";
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import pkg from "./package.json";
-import { test } from '@playwright/test';
 
 const { dependencies = {}, devDependencies = {} } = pkg as any as {
   dependencies: Record<string, string>;
@@ -27,6 +26,7 @@ export default defineConfig(({ command, mode }) => {
       // For example ['better-sqlite3'] if you use that in server functions.
       exclude: [],
     },
+    build: { chunkSizeWarningLimit: 2500 },
     test: {
       exclude: ['tests/*.spec.ts', '**/node_modules/**', '**/dist/**', '**/cypress/**', '**/.{idea,git,cache,output,temp}/**', '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*']
     },
