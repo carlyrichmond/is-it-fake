@@ -1,4 +1,4 @@
-import { component$, noSerialize, type NoSerialize, useStore, useStylesScoped$, useTask$, useOnDocument, useVisibleTask$, $ } from '@builder.io/qwik';
+import { component$, noSerialize, type NoSerialize, useStore, useStylesScoped$, useTask$ } from '@builder.io/qwik';
 import { routeLoader$, Form, routeAction$ } from '@builder.io/qwik-city';
 
 import tf from '@tensorflow/tfjs-node';
@@ -17,8 +17,8 @@ export const useImage = routeLoader$(async () => {
     const response = await fetch(url, {
         headers: { Accept: 'application/json' },
     });
-    //const imageBlob = await response.blob;
-    const buffer = response && response.ok ? new Uint8Array(await response.arrayBuffer()) : null;
+    
+    const buffer = response.ok ? new Uint8Array(await response.arrayBuffer()) : null;
 
     if (!buffer) {
         return { imageTensor: null, url: undefined };
@@ -52,7 +52,7 @@ export default component$(() => {
         store.model = noSerialize(model);
 
         if (imageUrlSignal.value.imageTensor){
-            const predictions = await store?.model?.classify(imageUrlSignal.value.imageTensor as tf.Tensor3D);
+            const predictions = await store.model?.classify(imageUrlSignal.value.imageTensor as tf.Tensor3D);
             store.predictions = predictions as unknown as any[];
         }
     });
