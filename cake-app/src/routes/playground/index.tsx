@@ -65,7 +65,7 @@ export default component$(() => {
                 Is it <span class="highlight">(F)ake</span>?!
             </h1>
 
-            <img alt="Cupcakes" data-testid="cake-image" src={imageUrlSignal.value.url} width="90vw" height="auto"/>
+            <img alt="Cupcakes" class="cake-image" data-testid="cake-image" src={imageUrlSignal.value.url} width="1600" height="900"/>
             <Form action={isItCakeAction}>
                 <button data-testid="cake-button" name="vote" value="cake">Cake 👍</button>
                 <button data-testid="not-cake-button" name="vote" value="not-cake">Not Cake 👎</button>
