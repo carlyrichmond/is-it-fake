@@ -26,7 +26,7 @@
     "preview": "qwik build preview && vite preview --open",
     "start": "vite --open --mode ssr",
     "test.e2e": "playwright test",
-    "test.unit": "vitest components",
+    "test.unit": "vitest components --coverage",
     "test.unit.ui": "vitest --ui components",
     "qwik": "qwik"
   },
@@ -52,6 +52,14 @@
     "vitest": "^1.4.0"
   },
   "dependencies": {
+    "@tensorflow-models/coco-ssd": "^2.2.3",
+    "@tensorflow-models/mobilenet": "^2.1.1",
+    "@tensorflow/tfjs": "^4.17.0",
+    "@tensorflow/tfjs-core": "^4.17.0",
+    "@tensorflow/tfjs-node": "^4.17.0",
     "@unpic/qwik": "^0.0.44"
+  },
+  "overrides": {
+    "@tensorflow/tfjs-core": "^4.17.0"
   }
 }

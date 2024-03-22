@@ -1,14 +1,14 @@
 import { component$, noSerialize, type NoSerialize, useStore, useStylesScoped$, useTask$, useOnDocument, useVisibleTask$, $ } from '@builder.io/qwik';
 import { routeLoader$, Form, routeAction$ } from '@builder.io/qwik-city';
 
-import '@tensorflow/tfjs-node';
-import mobilenet from '@tensorflow-models/mobilenet'
+import tf from '@tensorflow/tfjs-node';
+import type { MobileNet} from '@tensorflow-models/mobilenet';
+import { load } from '@tensorflow-models/mobilenet';
 
 import styles from "./index.css?inline";
-import tf from '@tensorflow/tfjs-node';
 
 type ImageClassification = {
-    model: NoSerialize<mobilenet.MobileNet> | undefined,
+    model: NoSerialize<MobileNet> | undefined,
     predictions: any[]; // TODO refine type
 }
 
@@ -48,11 +48,11 @@ export default component$(() => {
     });
 
     useTask$(async () => {
-        const model = await mobilenet.load();
+        const model = await load();
         store.model = noSerialize(model);
 
         if (imageUrlSignal.value.imageTensor){
-            const predictions = await store?.model?.classify(imageUrlSignal.value.imageTensor);
+            const predictions = await store?.model?.classify(imageUrlSignal.value.imageTensor as tf.Tensor3D);
             store.predictions = predictions as unknown as any[];
         }
     });
@@ -73,7 +73,7 @@ export default component$(() => {
 
             {
                 store.predictions.length > 0 ? store.predictions.map((prediction) => {
-                    return <span>{prediction.className} with {prediction.probability}</span>
+                    return <span key={prediction.className}>{prediction.className} with {prediction.probability}</span>
                 }) : 
                 <span>No predictions available</span>
             }
