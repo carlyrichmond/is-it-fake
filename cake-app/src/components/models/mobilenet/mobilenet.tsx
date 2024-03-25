@@ -6,7 +6,7 @@ import { load } from '@tensorflow-models/mobilenet';
 
 import styles from "./mobilenet.module.css";
 
-type ImageClassification = {
+type MobileNetImageClassification = {
     model: NoSerialize<MobileNet> | undefined,
     imageTensor: NoSerialize<tf.Tensor3D> | undefined,
     imageUrl: string,
@@ -14,7 +14,7 @@ type ImageClassification = {
 }
 
 export const MobileNetClassification = component$(() => {
-    const store = useStore<ImageClassification>({
+    const store = useStore<MobileNetImageClassification>({
         model: undefined,
         imageTensor: undefined,
         imageUrl: 'https://images.unsplash.com/photo-1607478900766-efe13248b125',

@@ -6,7 +6,7 @@ import { load } from '@tensorflow-models/coco-ssd';
 
 import styles from "./coco-ssd.module.css";
 
-type ImageClassification = {
+type CocoSSDImageClassification = {
     model: NoSerialize<ObjectDetection> | undefined,
     imageTensor: NoSerialize<tf.Tensor3D> | undefined,
     imageUrl: string,
@@ -14,7 +14,7 @@ type ImageClassification = {
 }
 
 export const CocoSsdClassification = component$(() => {
-    const store = useStore<ImageClassification>({
+    const store = useStore<CocoSSDImageClassification>({
         model: undefined,
         imageTensor: undefined,
         imageUrl: 'https://images.unsplash.com/photo-1552689486-f6773047d19f?q=80&w=600&auto=format&fit=crop',

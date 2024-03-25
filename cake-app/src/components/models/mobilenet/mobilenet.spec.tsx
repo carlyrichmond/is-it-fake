@@ -1,5 +1,5 @@
 import { createDOM } from '@builder.io/qwik/testing';
-import { test, expect, vi } from 'vitest';
+import { test, expect } from 'vitest';
 
 import { MobileNetClassification } from './mobilenet';
 
