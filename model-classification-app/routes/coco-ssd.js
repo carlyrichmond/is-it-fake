@@ -1,25 +1,25 @@
 var express = require('express');
 var tf = require('@tensorflow/tfjs-node');
-var mobilenet = require('@tensorflow-models/mobilenet');
+var cocoSsd = require('@tensorflow-models/coco-ssd');
 
 var router = express.Router();
 var model;
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('Hi MobileNet!');
+  res.send('Hi COCO-SSD!');
 });
 
 router.post('/classify', async function(req, res, next) {
     if (!model) {
-        model = await mobilenet.load()
+        model = await cocoSsd.load()
     }
     
     const tensor = await getTensorFromImage(req.body.imageUrl);
     let predictions = [];
 
         if (tensor && model) {
-            predictions = await model.classify(tensor);
+            predictions = await model.detect(tensor);
         }
 
     res.send(JSON.stringify(predictions));
@@ -38,8 +38,7 @@ async function getTensorFromImage(imageUrl) {
 
     return tf.tidy(() => {
         const decode = tf.node.decodeImage(buffer, 3);
-        const expand = tf.expandDims(decode, 0); // Do I need to expand?
-        return expand;
+        return decode;
     });
 }
 

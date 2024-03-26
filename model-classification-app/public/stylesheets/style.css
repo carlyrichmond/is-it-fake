@@ -103,6 +103,7 @@ section {
   gap: 1.5rem;
 
   margin: auto;
+  margin-bottom: 2rem !important;
 }
 
 .detail {
@@ -120,6 +121,8 @@ font-size: 1rem;
   gap: 0.5rem;
 }
 }
+
+/* MOBILENET ----------------------------------------- */
 
 .classifications {
 display: flex;
@@ -140,3 +143,36 @@ gap: 1rem;
     font-weight: bold;
     color: var(--qwik-light-blue);
   }
+
+/* COCO-SSD ----------------------------------------- */
+
+  #coco-ssd-predictions {
+    position: relative;
+    float: left;
+    width: calc(100% - 20px);
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  #coco-ssd-predictions > .classifer {
+      font-weight: bold;
+      color: var(--qwik-light-blue);
+  }
+
+    #coco-ssd-predictions > .highlight {
+      position: absolute !important;
+      padding: 5px;
+      background-color: rgba(113, 63, 194, 0.85);
+      color: white;
+      text-align: left;
+      border: 1px dashed rgba(24, 182, 246, 0.7);
+      z-index: 2;
+      font-size: 1.2rem;
+    }
+
+    #coco-ssd-predictions > .highlighter {
+      background: rgba(0, 108, 233, 0.25);
+      border: 1px dashed #fff;
+      z-index: 1;
+      position: absolute;
+    }

@@ -6,6 +6,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var mobileNetRouter = require('./routes/mobilenet');
+var cocoSsdRouter = require('./routes/coco-ssd');
 
 var app = express();
 
@@ -18,5 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/mobilenet', mobileNetRouter);
+app.use('/coco-ssd', cocoSsdRouter);
 
 module.exports = app;
