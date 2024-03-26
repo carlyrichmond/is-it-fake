@@ -132,3 +132,4 @@ dist
 
 # Local Netlify folder
 .netlify
+cake-app/playwright-report/index.html
