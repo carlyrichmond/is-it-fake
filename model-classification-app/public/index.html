@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+  <title>Express</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <h1>
+        Is it <span class="highlight">(F)ake</span>?!
+    </h1>
+
+    <p class="intro-message">Check out the models that you can play against in your quest to find the cake!</p>
+
+    <section class="section bright">
+      <h3>
+          MobileNet
+      </h3>
+
+      <div class="detail">
+          <div class="description">
+              <p>MobileNets are small, low-latency, low-power models
+                  that can solve a variety of use cases. The are commonly used
+                  for classification and detection use cases, as well as for generating
+                  feature embeddings for different types of data.</p>
+
+              <p>For this reason, MobileNet is great for image classification, and can be retrained for your own use case via transfer learning if the out-of-the-box classifications don't suit your needs. It is trained on the
+                  <a href="https://image-net.org/"> ImageNet</a> image database.</p>
+
+              <p>Source: <a href="https://github.com/tensorflow/tfjs-models/tree/master/mobilenet">GitHub</a></p>
+          </div>
+
+          <div class="classifications">
+              <img alt="Cupcakes" id="mobilenet-image" class="cake-image" data-testid="cake-image" 
+                src="https://images.unsplash.com/photo-1607478900766-efe13248b125" width="600" height="400" />
+              <div id="mobilenet-predictions" class="predictions" data-testid="predictions">
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <script src="./javascripts/mobilenet.js" defer></script>
+
+</body>
+
+</html>

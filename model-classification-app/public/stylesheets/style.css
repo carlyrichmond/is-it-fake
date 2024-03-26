@@ -1,0 +1,142 @@
+ /* GLOBAL DEFAULTS ------------------------------- */
+ 
+ :root {
+  --qwik-dark-blue: #006ce9;
+  --qwik-light-blue: #18b6f6;
+  --qwik-light-purple: #ac7ff4;
+  --qwik-dark-purple: #713fc2;
+  --qwik-dirty-black: #1d2033;
+  --qwik-dark-background: #151934;
+  --qwik-dark-text: #ffffff;
+}
+
+html {
+  line-height: 1;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+body {
+  background: var(--qwik-dark-background);
+  color: var(--qwik-dark-text);
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  line-height: inherit;
+}
+
+/* HEADINGS ------------------------------------- */
+h1,
+h2,
+h3 {
+  color: white;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.2rem;
+  text-align: center;
+}
+h1 .highlight,
+h3 .highlight {
+  color: var(--qwik-light-blue);
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 2.4rem;
+}
+h2 .highlight {
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
+  h2 {
+    font-size: 3.4rem;
+  }
+  h3 {
+    font-size: 3rem;
+  }
+}
+
+.intro-message {
+  text-align: center;
+}
+
+/* TAGS ----------------------------------------- */
+a {
+  text-decoration: none;
+  color: var(--qwik-light-blue);
+}
+
+/* CLASSIFICATION SECTIONS ----------------------- */
+
+section {
+  display: flex;
+  width: 90vw;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  margin: auto;
+}
+
+.detail {
+display: flex;
+flex-direction: row-reverse;
+gap: 1rem;
+
+font-size: 1rem;
+
+}
+
+@media screen and (max-width: 900px) {
+.detail {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+}
+
+.classifications {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.predictions {
+  display: flex;
+  flex-direction: column;
+}
+
+  .prediction::after {
+    content: none;
+  }
+
+  .classifer {
+    font-weight: bold;
+    color: var(--qwik-light-blue);
+  }
