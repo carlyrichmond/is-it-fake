@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   res.send('Hi COCO-SSD!');
 });
 
-router.post('/classify', async function(req, res, next) {
+router.post('/detect', async function(req, res, next) {
     if (!model) {
         model = await cocoSsd.load()
     }

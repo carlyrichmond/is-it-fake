@@ -6,7 +6,7 @@ async function getClassifications() {
     .getAttribute("src");
 
   // Get classifications
-  const response = await fetch("/coco-ssd/classify", {
+  const response = await fetch("/coco-ssd/detect", {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
