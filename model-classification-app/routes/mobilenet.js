@@ -38,8 +38,7 @@ async function getTensorFromImage(imageUrl) {
 
     return tf.tidy(() => {
         const decode = tf.node.decodeImage(buffer, 3);
-        const expand = tf.expandDims(decode, 0); // Do I need to expand?
-        return expand;
+        return decode;
     });
 }
 
