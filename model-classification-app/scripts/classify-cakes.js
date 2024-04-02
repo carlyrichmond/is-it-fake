@@ -32,7 +32,9 @@ exec("npm run start", (error, stdout, stderr) => {
 
 //getCakeImages();
 classifyImages();
+exit(0);
 
+/* Helper functions */
 
 async function getCakeImages() {
   let browser = await firefox.launch();
