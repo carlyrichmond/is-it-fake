@@ -133,3 +133,4 @@ dist
 # Local Netlify folder
 .netlify
 cake-app/playwright-report/index.html
+model-classification-app/.envrc
