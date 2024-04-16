@@ -17,6 +17,8 @@
     "express": "~4.16.1",
     "fs": "^0.0.1-security",
     "morgan": "~1.9.1",
-    "playwright": "^1.42.1"
+    "node-fetch": "^3.3.2",
+    "playwright": "^1.42.1",
+    "unsplash-js": "^7.0.19"
   }
 }
