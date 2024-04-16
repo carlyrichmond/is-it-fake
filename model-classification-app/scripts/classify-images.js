@@ -42,23 +42,15 @@ async function run() {
     console.error(`stderr: ${stderr}`);
   });
 
-  // Get client and remove index (if already created)
-  /*if (!esClient) {
-    console.error("Unable to connect to Elasticsearch");
-    return;
-  }
-  clearIndex();*/
+  // Reset index (uncomment if regenerating)
+  //clearIndex();
 
-  //getCakeImages();
-  //const cakeImageUrls = loadCakeImageUrls();
-  //await classifyImages('cake', cakeImageUrls);
+  getCakeImages();
+  const cakeImageUrls = loadCakeImageUrls();
+  await classifyImages('cake', cakeImageUrls);
 
   const objectImageUrls = await getUnsplashImageUrls();
-  //const objectImageUrls = ['https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=2850&auto=format&fit=crop'];
   await classifyImages("not cake", objectImageUrls);
-
-  //console.log("Image classification complete!");
-  //exit(0);
 }
 
 /* Helper functions */
@@ -160,8 +152,6 @@ async function getTensorFromImage(imageUrl) {
     } else {
       response = await getImage(imageUrl);
     }
-
-    console.log(response);
 
     const buffer = response.ok
       ? new Uint8Array(await response.arrayBuffer())

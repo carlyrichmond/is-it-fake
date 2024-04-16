@@ -9,7 +9,17 @@ const index = "classifications";
 
 async function clearIndex() {
     await esClient.indices.delete({ index: index });
-    await esClient.indices.create({ index: index });
+    await esClient.indices.create({ 
+      index: index, 
+      // Explicitly mapping category to keyword, other fields to be dynamically mapped
+      mappings: {
+        properties: {
+          "category": {
+            type: "keyword",
+            index: true
+          }
+        }
+      } });
 }
   
 async function addClassifiersToIndex(url, category, mobilenetClassifications, cocoSsdClassifications) {

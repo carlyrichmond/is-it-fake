@@ -5,9 +5,7 @@ const unsplash = createApi({
   accessKey: process.env.UNSPLASH_ACCESS_KEY
 });
 
-const queries = [ "cup", "vase"]; /* "candle", "bottle", "plate", "tray",
-  "thimble", "flowerpot", "dog", "cat", "hat", "book", "food", "reptile",
-  "toy", "shoe", "bag", "purse" ];*/
+const queries = [ "cup", "vase", "candle", "bottle", "plate", "tray", "thimble", "flowerpot", "dog", "cat", "hat", "book", "food", "reptile", "toy", "shoe", "bag", "purse" ];
 
 async function getUnsplashImageUrls() {
 
@@ -37,7 +35,6 @@ async function getUnsplashImageSource(imageUrl) {
   let response;
 
   const url = `${imageUrl}?client_id=${client_id}`;
-  console.log(`Test url ${url}`);
 
   try {
     response = await fetch(url, {
@@ -46,7 +43,6 @@ async function getUnsplashImageSource(imageUrl) {
       },
     });
 
-    console.log(response);
   } catch (e) {
     throw Error(`Unable to get image ${imageUrl} from Unsplash`);
   }

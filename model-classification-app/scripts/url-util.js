@@ -26,13 +26,10 @@ function loadCakeSites() {
   });
   }
 
-  
-
+  // Get vanilla image from URL (not for Unsplash)
   async function getImage(imageUrl) {
     try {
-    return await fetch(imageUrl, {
-        headers: headers,
-      });
+    return await fetch(imageUrl);
     }
     catch(e) {
         console.log(response);
