@@ -37,4 +37,29 @@ async function addClassifiersToIndex(url, category, mobilenetClassifications, co
     });
 }
 
-module.exports = { esClient, index, clearIndex, addClassifiersToIndex };
+async function getFirstNImagesByCategory(category, n) {
+  return await esClient.search({
+    index: index,
+    _source: [ "image_url" ],
+    size: n,
+    query: {
+      match: {
+        category: category
+      }
+    }
+  });
+}
+
+
+async function getAllImages(category, n) {
+  return await esClient.search({
+    index: index,
+    _source: [ "image_url" ],
+    size: 1000,
+    query: {
+      match_all: {}
+    }
+  });
+}
+
+module.exports = { esClient, clearIndex, addClassifiersToIndex, getAllImages, getFirstNImagesByCategory };

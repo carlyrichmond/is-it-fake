@@ -1,26 +1,21 @@
 const { exec } = require("child_process");
 const { exit } = require("process");
 
-const tf = require("@tensorflow/tfjs-node");
 const mobilenet = require("@tensorflow-models/mobilenet");
 const cocoSsd = require("@tensorflow-models/coco-ssd");
 
 const { firefox } = require("playwright");
 
+const { getTensorFromImage } = require("./tf-util");
+
 const {
   addClassifiersToIndex,
-  esClient,
   clearIndex,
 } = require("./elasticsearch-util");
+const { getUnsplashImageUrls } = require("./unsplash-util");
 const {
-  getUnsplashImageUrls,
-  getUnsplashImageSource,
-} = require("./unsplash-util");
-const {
-  getImage,
   loadCakeImageUrls,
   loadCakeSites,
-  loadUnsplashImageUrls,
   writeUrlsToFile,
 } = require("./url-util");
 
@@ -141,31 +136,4 @@ async function getCocoSSDPredictions(tensor) {
   }
 
   return predictions;
-}
-
-async function getTensorFromImage(imageUrl) {
-  try {
-    let response;
-
-    if (imageUrl.includes("unsplash")) {
-      response = await getUnsplashImageSource(imageUrl);
-    } else {
-      response = await getImage(imageUrl);
-    }
-
-    const buffer = response.ok
-      ? new Uint8Array(await response.arrayBuffer())
-      : null;
-
-    if (!buffer) {
-      return;
-    }
-
-    return tf.tidy(() => {
-      const decode = tf.node.decodeImage(buffer, 3);
-      return decode;
-    });
-  } catch (e) {
-    throw Error(`Unable to create tensor for image ${url}`);
-  }
 }
