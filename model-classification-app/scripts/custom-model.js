@@ -1,6 +1,10 @@
 const tf = require("@tensorflow/tfjs-node");
 
-const { getAllImages, getFirstNImagesByCategory } = require("./elasticsearch-util");
+const {
+  getAllImages,
+  getFirstNImagesByCategory,
+  updateDocumentWithClassification,
+} = require("./elasticsearch-util");
 const { getTensorFromImage, IMAGE_HEIGHT, IMAGE_WIDTH } = require("./tf-util");
 
 const CLASS_NAMES = ["cake", "not cake"];
@@ -18,19 +22,20 @@ async function run() {
   const notCakeTensors = await getTensorsForImageSet(notCakesResponse);
 
   const images = cakeTensors.concat(notCakeTensors);
-  const singleImageTensor = tf.stack(images)
-  const labels = tf.tensor2d(
-    Array.from({ length: cakeTensors.length })
-      .fill([1, 0])
-      .concat(Array.from({ length: notCakeTensors.length }).fill([0, 1]))
-  );
+  const labels = Array.from({ length: cakeTensors.length })
+    .fill([1, 0])
+    .concat(Array.from({ length: notCakeTensors.length }).fill([0, 1]));
+
+  tf.util.shuffleCombo(images, labels);
+  const singleImageTensor = tf.stack(images);
+  const labelsTensor = tf.tensor2d(labels);
 
   const model = createModel();
 
   const BATCH_SIZE = 32;
   const NUM_EPOCHS = 10;
 
-  await model.fit(singleImageTensor, labels, {
+  await model.fit(singleImageTensor, labelsTensor, {
     batchSize: BATCH_SIZE,
     epochs: NUM_EPOCHS,
     shuffle: true,
@@ -49,9 +54,7 @@ async function run() {
 async function getTensorsForImageSet(results) {
   let tensors = [];
   for (result of results.hits.hits) {
-    const features = await getResizedImageTensor(
-      result._source.image_url
-    );
+    const features = await getResizedImageTensor(result._source.image_url);
     tensors.push(features);
   }
 
@@ -127,28 +130,34 @@ function createModel() {
 }
 
 async function classifyAllImages(model) {
-    const imagesResponse = await getAllImages();
-    const images = imagesResponse.hits.hits.flatMap((result) => {
-        return { id: result._id, url: result._source.image_url };
-    });
-    
-    for (image of images) {
-        console.log(image.url);
-        const tensor = await getResizedImageTensor(image.url)
-        const results = await model.predict(tensor.expandDims()).data();
-        console.log(results);
+  const imagesResponse = await getAllImages();
+  const images = imagesResponse.hits.hits.flatMap((result) => {
+    return { id: result._id, url: result._source.image_url };
+  });
 
-        const prediction =  Array.from(results).map(function (p, i) {
-			return {
-				probability: p,
-				className:  CLASS_NAMES[i] // we are selecting the value from the obj
-			};
-		}).sort(function (a, b) {
-			return b.probability - a.probability;
-		}).slice(0, 1);
-        //const category = predictions[0] > predictions[1] ? "cake" : "not cake";
+  for (image of images) {
+    console.log(image.url);
+    const tensor = await getResizedImageTensor(image.url);
+    const results = await model.predict(tensor.expandDims()).data();
+    console.log(results);
 
-        console.log(prediction[0].className);
-        //updateDocumentWithClassification(image.id, classifications);
-    }
+    const predictions = Array.from(results)
+      .map(function (p, i) {
+        return {
+          probability: p,
+          className: CLASS_NAMES[i], // we are selecting the value from the obj
+        };
+      })
+      .sort(function (a, b) {
+        return b.probability - a.probability;
+      })
+      .slice(0, 2);
+
+    console.log(predictions);
+    updateDocumentWithClassification(
+      image.id,
+      predictions[0].className,
+      predictions
+    );
+  }
 }

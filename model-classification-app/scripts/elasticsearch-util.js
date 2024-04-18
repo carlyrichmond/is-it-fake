@@ -62,4 +62,27 @@ async function getAllImages(category, n) {
   });
 }
 
-module.exports = { esClient, clearIndex, addClassifiersToIndex, getAllImages, getFirstNImagesByCategory };
+async function updateDocumentWithClassification(documentId, category, predictions) {
+  const myModelClassifier = { 
+    category:  category,
+    predictions: predictions
+  };
+  try {
+    const response = await esClient.update(
+      {
+        index: index,
+        id: documentId,
+        script: {
+          lang: 'painless',
+          source: `ctx._source.my_model_classifier = params.classification`,
+          params: { classification: myModelClassifier }
+        }
+      }
+    );
+    console.log(response);
+  } catch(e) {
+    console.log(e);
+  }
+}
+
+module.exports = { esClient, clearIndex, addClassifiersToIndex, getAllImages, getFirstNImagesByCategory, updateDocumentWithClassification };
