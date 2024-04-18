@@ -85,4 +85,26 @@ async function updateDocumentWithClassification(documentId, category, prediction
   }
 }
 
-module.exports = { esClient, clearIndex, addClassifiersToIndex, getAllImages, getFirstNImagesByCategory, updateDocumentWithClassification };
+async function updateDocumentWithTransferClassification(documentId, category, predictions) {
+  const myModelClassifier = { 
+    category:  category,
+    predictions: predictions
+  };
+  try {
+    await esClient.update(
+      {
+        index: index,
+        id: documentId,
+        script: {
+          lang: 'painless',
+          source: `ctx._source.my_transfer_model_classifier = params.classification`,
+          params: { classification: myModelClassifier }
+        }
+      }
+    );
+  } catch(e) {
+    console.log(e);
+  }
+}
+
+module.exports = { esClient, clearIndex, addClassifiersToIndex, getAllImages, getFirstNImagesByCategory, updateDocumentWithClassification, updateDocumentWithTransferClassification };

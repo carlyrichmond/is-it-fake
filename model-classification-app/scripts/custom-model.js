@@ -5,7 +5,7 @@ const {
   getFirstNImagesByCategory,
   updateDocumentWithClassification,
 } = require("./elasticsearch-util");
-const { getTensorFromImage, IMAGE_HEIGHT, IMAGE_WIDTH } = require("./tf-util");
+const { getResizedImageTensor, getTensorsForImageSet, IMAGE_HEIGHT, IMAGE_WIDTH } = require("./tf-util");
 
 const CLASS_NAMES = ["cake", "not cake"];
 
@@ -51,24 +51,6 @@ async function run() {
 }
 
 /* Functional implementation */
-async function getTensorsForImageSet(results) {
-  let tensors = [];
-  for (result of results.hits.hits) {
-    const features = await getResizedImageTensor(result._source.image_url);
-    tensors.push(features);
-  }
-
-  return tensors;
-}
-
-async function getResizedImageTensor(imageUrl) {
-  const decodedImage = await getTensorFromImage(imageUrl);
-  const resizedImage = tf.image.resizeBilinear(decodedImage, [
-    IMAGE_WIDTH,
-    IMAGE_HEIGHT,
-  ]);
-  return resizedImage;
-}
 
 function createModel() {
   const model = tf.sequential();

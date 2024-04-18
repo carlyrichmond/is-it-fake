@@ -33,4 +33,23 @@ async function getTensorFromImage(imageUrl) {
     }
   }
 
-module.exports = { getTensorFromImage, IMAGE_HEIGHT, IMAGE_WIDTH };
+  async function getTensorsForImageSet(results) {
+    let tensors = [];
+    for (result of results.hits.hits) {
+      const features = await getResizedImageTensor(result._source.image_url);
+      tensors.push(features);
+    }
+  
+    return tensors;
+  }
+  
+  async function getResizedImageTensor(imageUrl) {
+    const decodedImage = await getTensorFromImage(imageUrl);
+    const resizedImage = tf.image.resizeBilinear(decodedImage, [
+      IMAGE_WIDTH,
+      IMAGE_HEIGHT
+    ], true);
+    return resizedImage;
+  }
+
+module.exports = { getResizedImageTensor, getTensorFromImage, getTensorsForImageSet, IMAGE_HEIGHT, IMAGE_WIDTH };
