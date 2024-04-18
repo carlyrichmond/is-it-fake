@@ -1,68 +1,200 @@
+/* SHELL ---------------------------------------- */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --qwik-dark-blue: #006ce9;
+  --qwik-light-blue: #18b6f6;
+  --qwik-light-purple: #ac7ff4;
+  --qwik-dark-purple: #713fc2;
+  --qwik-dirty-black: #1d2033;
+  --qwik-dark-background: #151934;
+  --qwik-dark-text: #ffffff;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
 
 body {
+  background: var(--qwik-dark-background);
+  color: var(--qwik-dark-text);
+  overflow-x: hidden;
+}
+
+/* HEADINGS ------------------------------------- */
+h1,
+h2,
+h3 {
+  color: white;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 3.2rem;
+  text-align: center;
+}
+h1 .highlight,
+h3 .highlight {
+  color: var(--qwik-light-blue);
 }
 
+h2 {
+  font-weight: 400;
+  font-size: 2.4rem;
+}
+h2 .highlight {
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
+  h2 {
+    font-size: 3.4rem;
+  }
+  h3 {
+    font-size: 3rem;
+  }
+}
+
+/* TAGS ----------------------------------------- */
+a {
+  text-decoration: none;
+  color: var(--qwik-light-blue);
+}
+
+code {
+  background: rgba(230, 230, 230, 0.3);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* CONTAINER ------------------------------------ */
+.container {
+  margin: 0 auto;
+  padding: 30px 40px;
+}
+.container.container-purple {
+  background: var(--qwik-light-purple);
+}
+.container.container-dark {
+  background: var(--qwik-dark-background);
+  color: var(--qwik-dark-text);
+}
+.container.container-center {
+  text-align: center;
+}
+.container.container-flex {
+  /* does nothing on mobile */
+}
+.container.container-spacing-xl {
+  padding: 50px 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 60px 80px;
+  }
+  .container.container-spacing-xl {
+    padding: 100px 60px;
+  }
+  .container.container-flex {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+  }
+}
+
+/* BUTTONS -------------------------------------- */
+a.button,
 button {
+  background: var(--qwik-light-blue);
+  border: none;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-size: 0.8rem;
+  padding: 15px 20px;
+  text-align: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
+a.button.button-dark,
+button.button-dark {
+  background: var(--qwik-dirty-black);
+}
+
+a.button.button-small,
+button.button-small {
+  padding: 15px 25px;
+}
+
+@media screen and (min-width: 768px) {
+  a.button,
   button {
-    background-color: #f9f9f9;
+    font-size: 1rem;
+    padding: 23px 35px;
   }
 }
+
+/* DESIGN --------------------------------------- */
+.ellipsis {
+  position: absolute;
+  top: 100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    57.58% 57.58% at 48.79% 42.42%,
+    rgba(24, 180, 244, 0.5) 0%,
+    rgba(46, 55, 114, 0) 63.22%
+  );
+  transform: rotate(5deg);
+  opacity: 0.5;
+  z-index: -1;
+}
+.ellipsis.ellipsis-purple {
+  top: 1350px;
+  left: -100px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(172, 127, 244, 0.5) 0%,
+    rgba(21, 25, 52, 0) 100%
+  );
+  transform: rotate(-5deg);
+}
+
+@media screen and (min-width: 768px) {
+  .ellipsis {
+    top: -100px;
+    left: 350px;
+    width: 1400px;
+    height: 800px;
+  }
+  .ellipsis.ellipsis-purple {
+    top: 1300px;
+    left: -200px;
+  }
+}
+

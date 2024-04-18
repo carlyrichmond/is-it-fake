@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: 20.11.1
       - run: npm ci && npm run build
-        working-directory: ./cake-app
+        working-directory: ./cake-game
   test:
     runs-on: ubuntu-latest
     steps:
@@ -19,7 +19,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.11.1
-      - run: npm ci && npx playwright install --with-deps && npm run test.e2e
-        working-directory: ./cake-app
-      - run: npm ci && npm run test.unit
-        working-directory: ./cake-app
+      - run: npm ci && npx playwright install --with-deps && npm run test.ct
+        working-directory: ./cake-game
