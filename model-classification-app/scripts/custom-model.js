@@ -41,13 +41,19 @@ async function run() {
     shuffle: true,
   });
 
-  // TODO classify images
+  // Classify images
   await classifyAllImages(model);
 
   // Optional saving of model
   const MODEL_DIR = "./model";
 
   await model.save(`file://${MODEL_DIR}`);
+
+  // Tidy up
+  singleImageTensor.dispose();
+  labelsTensor.dispose();
+  tf.dispose(cakeTensors);
+  tf.dispose(notCakeTensors);
 }
 
 /* Functional implementation */
@@ -121,7 +127,6 @@ async function classifyAllImages(model) {
     console.log(image.url);
     const tensor = await getResizedImageTensor(image.url);
     const results = await model.predict(tensor.expandDims()).data();
-    console.log(results);
 
     const predictions = Array.from(results)
       .map(function (p, i) {
@@ -141,5 +146,7 @@ async function classifyAllImages(model) {
       predictions[0].className,
       predictions
     );
+
+    tensor.dispose();
   }
 }
