@@ -19,5 +19,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.11.1
-      - run: npm ci && npx playwright install --with-deps && npm run test.ct
+      - run: npm ci && npx playwright install --with-deps && npm run test-ct
         working-directory: ./cake-game
