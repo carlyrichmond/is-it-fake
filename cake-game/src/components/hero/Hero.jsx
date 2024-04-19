@@ -9,7 +9,7 @@ function Hero() {
 
   return (
     <>
-      <div className="container">
+      <div className="hero">
       <img src={duckImage} className="hero-image" alt="Image duck cake" />
       <h1>
         Is it <span className="highlight">(F)ake</span>?!

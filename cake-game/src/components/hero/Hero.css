@@ -12,11 +12,12 @@
   .hero-image {
     width: 100%;
     height: auto;
-    margin: auto;
+    align-self: center;
     object-fit: cover;
     z-index: -1;
     opacity: 0.3;
     pointer-events: none;
+    position: fixed;
   }
   
   .hero p {
