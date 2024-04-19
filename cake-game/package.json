@@ -11,12 +11,12 @@
     "test-ct": "playwright test -c playwright-ct.config.ts"
   },
   "dependencies": {
+    "@playwright/experimental-ct-react": "1.42",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
-    "@playwright/experimental-ct-react": "^1.43.1",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
