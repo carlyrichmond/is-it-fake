@@ -5,15 +5,28 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import App from './App.jsx'
-import './index.css'
+import './index.css';
+
+import App from './App.jsx';
 import Error from './Error.jsx';
+import Play from './routes/play/Play.jsx';
+import Home from './routes/home/Home.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <Error />
+    errorElement: <Error />,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: '/play',
+        element: <Play />
+      }
+    ]
   },
 ]);
 
