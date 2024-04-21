@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import axios from "axios";
 
 import "./Play.css";
 
 function Play() {
+  const navigate = useNavigate();
+
   const [imageUrl, setImageUrl] = useState();
   const [expectedCategory, setExpectedCategory] = useState('cake');
 
@@ -20,9 +24,6 @@ function Play() {
         if (response.status !== 200) {
             throw new Error('Unable to get next image');
         }
-        //const result = await response.json();
-
-        console.log(response.data);
         
         const imageUrl = response.data.image_url;
         const category = response.data.category;
