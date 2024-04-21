@@ -134,3 +134,4 @@ dist
 .netlify
 cake-app/playwright-report/index.html
 model-classification-app/.envrc
+cake-game/.envrc

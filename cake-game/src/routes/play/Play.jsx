@@ -1,13 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import "./Play.css";
 
 function Play() {
-  const TEST_URL =
-    "https://www.tastingtable.com/img/gallery/netflixs-bizarre-new-baking-show-is-it-cake-was-inspired-by-a-viral-meme/intro-1646847618.webp";
-  const [imageUrl, setImageUrl] = useState(TEST_URL);
+  const [imageUrl, setImageUrl] = useState();
+  const [expectedCategory, setExpectedCategory] = useState('cake');
+
+  useEffect(() => {
+    if (!imageUrl ) {
+      getNextRandomImage();
+    }
+  }, [imageUrl]);
+
+  async function getNextRandomImage() {
+    try {
+        const response = await axios.get('.netlify/functions/image');
+        
+        if (response.status !== 200) {
+            throw new Error('Unable to get next image');
+        }
+        //const result = await response.json();
+
+        console.log(response.data);
+        
+        const imageUrl = response.data.image_url;
+        const category = response.data.category;
+        
+        setImageUrl(imageUrl);
+        setExpectedCategory(category);
+      }
+      catch(error) {
+        console.log('Unable to get next image');
+        navigate('/error');
+      }
+  }
 
   function castVote(event) {
-    console.log(event.value);
+    console.log(event.target.value);
   }
 
   return (
@@ -18,25 +48,26 @@ function Play() {
         </h1>
 
         <img
+          className="classifier-image"
           alt="Random image"
           data-testid="cake-image"
           src={imageUrl}
-          width="90vw"
-          height="auto"
         />
-        <div>
+        <div className="voting-buttons">
           <button
             data-testid="cake-button"
             name="vote"
             value="cake"
-            onClick={castVote}>
+            onClick={castVote}
+          >
             Cake 👍
           </button>
           <button
             data-testid="not-cake-button"
             name="vote"
             value="not-cake"
-            onClick={castVote}>
+            onClick={castVote}
+          >
             Not Cake 👎
           </button>
         </div>

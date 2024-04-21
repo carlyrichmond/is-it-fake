@@ -1,0 +1,31 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    margin: auto;
+}
+
+.classifier-image {
+    width: 90%;
+    height: auto;
+    display: block;
+  }
+
+  /*@media screen and (min-width: 768px) {
+    section {
+        width: 80%;
+        margin: auto;
+    }
+  }*/
+
+p {
+    font-weight: bold;
+  }
+
+  .voting-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
