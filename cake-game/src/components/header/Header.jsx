@@ -15,7 +15,7 @@ function Header() {
           </div>
           <ul>
             <li>
-              <Link data-testid="play-link" to={`/play`} title="Elastic">
+              <Link data-testid="play-link" to={`/start`} title="Elastic">
                 Play
               </Link>
             </li>

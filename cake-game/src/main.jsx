@@ -9,6 +9,7 @@ import './index.css';
 
 import App from './App.jsx';
 import Error from './Error.jsx';
+import Start from './routes/start/Start.jsx';
 import Play from './routes/play/Play.jsx';
 import Home from './routes/home/Home.jsx';
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      },
+      {
+        path: '/start',
+        element: <Start />
       },
       {
         path: '/play',

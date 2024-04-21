@@ -1,10 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+
 import'./Hero.css';
 import duckImage from '../../assets/header-duck-cake.jpeg'
 
 function Hero() {
+  const navigate = useNavigate();
 
     function startGame() {
-        alert('Let\'s begin');
+        navigate('/start');
     }
 
   return (
