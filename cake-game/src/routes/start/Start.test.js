@@ -15,5 +15,5 @@ test('should enter username', async ({ mount }) => {
     const username = 'rubber-ducky'
     usernameInput.fill('username');
 
-    await expect(usernameInput).toHaveText(username);
+    await expect(await usernameInput.inputValue()).toBe(username);
   });
