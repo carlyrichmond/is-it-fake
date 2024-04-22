@@ -18,12 +18,21 @@ function ClassifierTableRow(props) {
     return classifier;
   }
 
+  function getMatchIndicator() {
+    if (props.result.expected_category === props.result.user_category) {
+      return '✅';
+    } 
+
+    return '❌';
+  }
+
   return (
     <>
       <tr className={`${ props.rowNumber % 2 === 0 ? 'alternative-row' : 'row'}`}>
         <th>
           <img className="image" alt="Random image" src={props.result.image_url} />
         </th>
+        <th>{ getMatchIndicator() }</th>
         <th className="classification">{ props.result.expected_category }</th>
         <th className="classification">{ props.result.user_category }</th>
         <th className="classification">{ formatClassificationCollections(props.result.models.mobilenet_classifier, 'className') }</th>
