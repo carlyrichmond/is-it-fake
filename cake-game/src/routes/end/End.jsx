@@ -66,6 +66,7 @@ function End() {
             <thead className="table-header">
               <tr className="header-row">
                 <th>Image</th>
+                <th>Expected</th>
                 <th>You</th>
                 <th>MobileNet</th>
                 <th>COCO-SSD</th>

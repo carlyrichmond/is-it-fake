@@ -24,6 +24,7 @@ function ClassifierTableRow(props) {
         <th>
           <img className="image" alt="Random image" src={props.result.image_url} />
         </th>
+        <th className="classification">{ props.result.expected_category }</th>
         <th className="classification">{ props.result.user_category }</th>
         <th className="classification">{ formatClassificationCollections(props.result.models.mobilenet_classifier, 'className') }</th>
         <th className="classification">{ formatClassificationCollections(props.result.models?.coco_ssd_predictions, 'class') }</th>

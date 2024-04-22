@@ -54,7 +54,7 @@ export async function saveUserClassification(userClassification) {
 export async function getGameResults(gameMetadata) {
     return await client.search({
         index: userClassificationsIndex,
-        _source: ["image_url", "user_category", "models"], 
+        _source: ["image_url", "expected_category", "user_category", "models"], 
         query: {
             match: {
                 game_id: gameMetadata.game_id
