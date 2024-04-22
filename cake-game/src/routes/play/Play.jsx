@@ -69,7 +69,7 @@ function Play() {
       }
       
       setImageCount(imageCount + 1);
-      if (imageCount < 9) {
+      if (imageCount < 10) {
         await getNextRandomImage();
       } else {
         navigate(`/end?username=${username}&game_id=${classification.game_id}`);
