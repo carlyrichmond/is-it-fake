@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Start />
       },
       {
-        path: '/play', //?username=:username',
+        path: '/play',
         element: <Play />
       }
     ]
