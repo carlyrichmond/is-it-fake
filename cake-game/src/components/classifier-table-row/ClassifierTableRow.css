@@ -1,0 +1,20 @@
+.image {
+  width: 50px;
+  height: auto;
+}
+
+.classification {
+  font-weight: normal;
+}
+
+tr {
+  padding: 0.5rem 3rem;
+}
+
+.row {
+  background-color: var(--qwik-dark-background);
+}
+
+.alternative-row {
+  background-color: var(--qwik-alt-background);
+}

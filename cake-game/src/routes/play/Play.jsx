@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
 
 import "./Play.css";
 
@@ -9,7 +10,11 @@ function Play() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // UUID is 
+  const gameId = useState(uuidv4());
+
   const [username, setUsername] = useState();
+  const [imageCount, setImageCount] = useState(0);
   const [imageUrl, setImageUrl] = useState();
   const [expectedCategory, setExpectedCategory] = useState('cake');
 
@@ -45,12 +50,14 @@ function Play() {
 
   async function castVote(event) {
     const classification = {
+      game_id: gameId[0],
       username: username,
       timestamp: new Date().toISOString(),
       image_url: imageUrl,
       expected_category: expectedCategory,
       user_category: event.target.value
-    }
+    };
+
     try {
       const response = await axios.post('.netlify/functions/result', classification);
       
@@ -58,7 +65,12 @@ function Play() {
           throw new Error('Unable to get next image');
       }
       
-      await getNextRandomImage();
+      setImageCount(imageCount + 1);
+      if (imageCount < 9) {
+        await getNextRandomImage();
+      } else {
+        navigate(`/end?username=${username}&game_id=${classification.game_id}`);
+      }
     }
     catch(error) {
       console.log('Unable to get next image');

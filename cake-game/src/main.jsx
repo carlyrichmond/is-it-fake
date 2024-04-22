@@ -12,6 +12,7 @@ import Error from './Error.jsx';
 import Start from './routes/start/Start.jsx';
 import Play from './routes/play/Play.jsx';
 import Home from './routes/home/Home.jsx';
+import End from './routes/end/End.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/play',
-        element: <Play />
+        element: <Play />,
+      },
+      {
+        path: '/end',
+        element: <End />
       }
     ]
   },

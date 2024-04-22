@@ -1,0 +1,29 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    margin: auto;
+}
+
+table {
+  width: 95%;
+
+  /*padding: 0.5rem 2rem;*/
+
+  border: 1px solid;
+  border-color: var(--qwik-dark-purple);
+}
+
+.header-row {
+  background-color: var(--qwik-dark-background);
+  color: var(--qwik-dark-text);
+  font-size: large;
+
+  height: 5rem;
+}
+
+th {
+  text-wrap: wrap;
+}
