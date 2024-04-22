@@ -8,7 +8,7 @@ This repo documents my exciting journey into learning machine learning practices
 
 This repo contains two applications:
 
-1. [Is it (F)ake?!](./cake-app/) game, located in the `cake-app` folder where players can guess if the image is cake or not cake. This application is written using [Qwik](https://qwik.dev/).
+1. [Is it (F)ake?!](./cake-app/) game, located in the `cake-app` folder where players can guess if the image is cake or not cake. This application is written using [React](https://react.dev/), [Elasticsearch Serverless Node.js client](https://github.com/elastic/elasticsearch-serverless-js) and [Netlify functions](https://www.netlify.com/platform/core/functions/).
 2. The [Model Classification](./model-classification-app/) application is written in vanilla JavaScript, HTML and CSS. It is present in the `model-playground` folder and contains several useful elements:
  * A sample webpage showing predictions generated using the COCO-SD and MobileNet model on a sample image.
  * The [`classify-images.js`](./model-classification-app/scripts/classify-images.js) script includes a Node.js implementation generating image classifications of a set of source images for MobileNet and COCO-SSD. These results are persisted in Elasticsearch.
@@ -19,30 +19,23 @@ This repo contains two applications:
 
 See below for how to run the applications and tests.
 
-#### `cake-app`
+#### `cake-game`
 
-Start the application on `http://localhost:5173/`:
+Start the application on `http://localhost:5173/`, ensuring you have [Netlify CLI](https://docs.netlify.com/cli/get-started/) installed:
 
 ```
-cd ./cake-app
+cd ./cake-game
 npm install
-npm run start
+npm install netlify-cli -g
+netlify dev
 ```
 
-Run E2E tests using Playwright:
+Execute the component tests:
 
 ```
-cd ./cake-app
+cd ./cake-game
 npm install
-npm run test.e2e
-```
-
-Execute the unit tests:
-
-```
-cd ./cake-app
-npm install
-npm run test.unit
+npm run test-ct
 ```
 
 #### `model-classification-app`
