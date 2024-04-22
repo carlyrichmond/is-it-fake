@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
+import confetti from 'canvas-confetti';
 
 import "./Play.css";
 
@@ -58,6 +59,8 @@ function Play() {
       user_category: event.target.value
     };
 
+    triggerConfetti(event.target.value);
+
     try {
       const response = await axios.post('.netlify/functions/result', classification);
       
@@ -75,6 +78,18 @@ function Play() {
     catch(error) {
       console.log('Unable to get next image');
       navigate('/error');
+    }
+  }
+
+  function triggerConfetti(vote) {
+    const baseOptions = { origin: { x: 0.5, y: 0.8 }, particleCount: 200, spread: 180 };
+
+    if (vote === expectedCategory) {
+      confetti(baseOptions);
+    } else {
+      const scalar = 2;
+      const cross = confetti.shapeFromText({ text: '❌', scalar });
+      confetti({ shapes: [cross], scalar: scalar, ...baseOptions });
     }
   }
 
@@ -103,7 +118,7 @@ function Play() {
           <button
             data-testid="not-cake-button"
             name="vote"
-            value="not-cake"
+            value="not cake"
             onClick={castVote}
           >
             Not Cake 👎
