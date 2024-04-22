@@ -1,5 +1,5 @@
 import { getRandomImage } from "../util/elasticsearch";
-import { convertRequest, generateResponse } from "../util/helper";
+import { generateResponse } from "../util/helper";
 
 /**
  * Get a random image
@@ -11,10 +11,8 @@ import { convertRequest, generateResponse } from "../util/helper";
 export async function handler(event, context) {
   try {
     const response = await getRandomImage();
-
     const result = response.hits.hits[0]._source;
 
-    console.log(result);
     return generateResponse(200, result);
   } catch (e) {
     console.log(e);
