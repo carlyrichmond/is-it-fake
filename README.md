@@ -40,7 +40,7 @@ npm run test-ct
 
 #### `model-classification-app`
 
-To start the model application on `http://localhost:8080`:
+To start the model application on `http://localhost:3000`:
 
 ```
 cd ./model-classification-app
