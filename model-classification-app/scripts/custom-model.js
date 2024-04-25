@@ -57,19 +57,29 @@ async function run() {
 }
 
 /* Functional implementation */
-
+// Convolutional Neural Network (CNN) example
 function createModel() {
   const model = tf.sequential();
 
+  /* Creates a 2d convolution layer. 
+  * Concept from computer vision where a filter (or kernel or matrix) is applied and moves 
+  through the image by the specified strides to identify features of interest in the image 
+  See https://www.kaggle.com/discussions/general/463431
+  */
   model.add(
     tf.layers.conv2d({
       inputShape: [IMAGE_WIDTH, IMAGE_HEIGHT, 3],
-      filters: 16,
-      kernelSize: 3,
-      activation: "relu",
+      filters: 16, // dimensions of the output space
+      kernelSize: 3, // 3x3 matrix
+      activation: "relu", //f(x)=max(0,x)
     })
   );
 
+  /* Max pooling reduces the dimensionality of images by reducing the number of pixels in the output from the 
+   * previous convolutional layer.
+   * Used to reduce computational load going forward and reduce overfitting
+   * See https://deeplizard.com/learn/video/ZjM_XQa5s6s
+  */
   model.add(
     tf.layers.maxPooling2d({
       poolSize: 2,
@@ -92,8 +102,12 @@ function createModel() {
     })
   );
 
+  // Flattens the inputs to 1D, making the outputs 2D
   model.add(tf.layers.flatten());
 
+  /* Dense Layer is simple layer of neurons in which each neuron receives input from all the neurons of previous layer, 
+   * thus called as dense. Dense Layer is used to classify image based on output from convolutional layers. 
+   see https://towardsdatascience.com/introduction-to-convolutional-neural-network-cnn-de*/
   model.add(
     tf.layers.dense({
       units: 64,
@@ -104,13 +118,13 @@ function createModel() {
   model.add(
     tf.layers.dense({
       units: CLASS_NAMES.length,
-      activation: "softmax",
+      activation: "softmax", // turns a vector of K real values into a vector of K real values that sum to 1
     })
   );
 
   model.compile({
-    optimizer: tf.train.adam(),
-    loss: "categoricalCrossentropy",
+    optimizer: tf.train.adam(), // Stochastic Optimization method
+    loss: "categoricalCrossentropy", // Should this have been binaryCrossentropy?
     metrics: ["accuracy"],
   });
 
