@@ -106,56 +106,6 @@ function getTransferClassificationModel() {
   return myTransferMobileNetModel;
 }
 
-async function getMobileNetFeaturesForImage(imageUrl) {
-  const decodedImage = await getTensorFromImage(imageUrl);
-  let predictions;
-  tf.tidy(() => {
-    const resizedImage = tf.image.resizeBilinear(decodedImage, [
-      IMAGE_WIDTH,
-      IMAGE_HEIGHT,
-    ]);
-    const normalizedImageTensor = resizedImage.div(255); // TODO Does fromImage also support 255 like frompixels?
-
-    predictions = mobileNetModel
-      //.predict(normalizedImageTensor.expandDims())
-      .predict(resizedImage.expandDims())
-      .squeeze(); // Squash to 1d tensor
-  });
-
-  return predictions;
-}
-
-async function trainAndPredict() {
-  let results;
-
-  tf.util.shuffleCombo(trainingDataInputs, trainingDataOutputs);
-  const outputsAsTensor = tf.tensor1d(trainingDataOutputs, "int32");
-  const oneHotOutputs = tf.oneHot(outputsAsTensor, CLASS_NAMES.length);
-
-  const inputs = tf.data.array(trainingDataInputs);
-  const labels = tf.data.array(oneHotOutputs);
-
-  // We zip the data and labels together, shuffle and batch 32 samples at a time.
-  const dataset = tf.data.zip({ inputs, labels }).shuffle(10).batch(5);
-
-  results = await myTransferMobileNetModel.fit(
-    trainingDataInputs,
-    oneHotOutputs,
-    {
-      shuffle: true,
-      batchSize: 5,
-      epochs: 10,
-      callbacks: { onEpochEnd: logProgress },
-    }
-  );
-
-  outputsAsTensor.dispose();
-  oneHotOutputs.dispose();
-  inputsAsTensor.dispose();
-
-  return results;
-}
-
 async function classifyAllImages(mobileNetModel, model) {
   const imagesResponse = await getAllImages();
   const images = imagesResponse.hits.hits.flatMap((result) => {
