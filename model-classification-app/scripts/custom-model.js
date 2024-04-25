@@ -14,11 +14,11 @@ run();
 
 async function run() {
   // Get a subset of the cake images
-  const cakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[0]);
+  const cakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[0], 50);
   const cakeTensors = await getTensorsForImageSet(cakesResponse);
 
   // Get a subset of the unsplash images for not cake images
-  const notCakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[0]);
+  const notCakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[0], 50);
   const notCakeTensors = await getTensorsForImageSet(notCakesResponse);
 
   const images = cakeTensors.concat(notCakeTensors);
