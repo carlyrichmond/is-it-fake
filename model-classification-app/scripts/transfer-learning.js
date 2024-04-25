@@ -14,9 +14,6 @@ const {
 
 const CLASS_NAMES = ["cake", "not cake"];
 
-let trainingDataInputs;
-let trainingDataOutputs;
-
 // Build transfer learning model
 run();
 
@@ -101,7 +98,6 @@ function getTransferClassificationModel() {
       CLASS_NAMES.length === 2
         ? "binaryCrossentropy"
         : "categoricalCrossentropy",
-    // As this is a classification problem you can record accuracy in the logs too!
     metrics: ["accuracy"],
   });
 
