@@ -41,6 +41,8 @@ async function run() {
 
   // Get features from MobileNet
   const mobileNetFeatures = images.map((image) => {
+    // Normalize the image data. Image data is always in the range of 0 to 255, 
+    // so you can simply divide resizedTensorFrame by 255 to ensure all values are between 0 and 1 instead as MobileNet expects
     const normalizedImageTensor = image.div(255);
     return mobileNetModel.predict(normalizedImageTensor.expandDims()).squeeze();
   });
