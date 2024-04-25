@@ -22,11 +22,11 @@ run();
 
 async function run() {
   // Get a subset of the cake images
-  const cakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[0]);
+  const cakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[0], 50);
   const cakeTensors = await getTensorsForImageSet(cakesResponse);
 
   // Get a subset of the unsplash images for not cake images
-  const notCakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[0]);
+  const notCakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[0], 50);
   const notCakeTensors = await getTensorsForImageSet(notCakesResponse);
 
   // Process
@@ -126,15 +126,6 @@ async function getMobileNetFeaturesForImage(imageUrl) {
 }
 
 async function trainAndPredict() {
-  /*tf.util.shuffleCombo(trainingDataInputs, trainingDataOutputs);
-  const outputsAsTensor = tf.tensor1d(trainingDataOutputs, "int32");
-  const oneHotOutputs = tf.oneHot(outputsAsTensor, CLASS_NAMES.length);*/
-
-  console.log(`Before ${tf.getBackend()}`);
-  await tf.setBackend("tensorflow");
-  console.log(`After ${tf.getBackend()}`);
-
-  //const inputsAsTensor = tf.stack(trainingDataInputs);
   let results;
 
   tf.util.shuffleCombo(trainingDataInputs, trainingDataOutputs);
@@ -157,10 +148,6 @@ async function trainAndPredict() {
       callbacks: { onEpochEnd: logProgress },
     }
   );
-  /*results = await myTransferMobileNetModel.fitDataset(dataset, {
-      epochs: 10,
-      callbacks: { onEpochEnd: logProgress },
-    });*/
 
   outputsAsTensor.dispose();
   oneHotOutputs.dispose();
