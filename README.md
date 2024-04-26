@@ -76,6 +76,7 @@ Alternatively, to persist your results to an alternative store you need to overr
 3. [National High Magnetic Field Laboratory: Convolution Kernels](https://micro.magnet.fsu.edu/primer/java/digitalimaging/processing/convolutionkernels/index.html)
 4. [Deeplizard: Max Pooling in Convolutional Neural Networks](https://deeplizard.com/learn/video/ZjM_XQa5s6s)
 5. [Govinda Dumane: Introduction to Convolutional Neural Network (CNN) using Tensorflow](https://towardsdatascience.com/introduction-to-convolutional-neural-network-cnn-de73f69c5b83)
+5. [AI Wiki: Accuracy and Loss](https://machine-learning.paperspace.com/wiki/accuracy-and-loss)
 
 ## Tutorials
 
