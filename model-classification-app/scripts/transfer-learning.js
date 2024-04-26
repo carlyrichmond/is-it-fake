@@ -57,6 +57,8 @@ async function run() {
   });
 
   await classifyAllImages(mobileNetModel, myTransferMobileNetModel);
+
+  console.log('Classification complete!');
 }
 
 /* Functional implementation */
