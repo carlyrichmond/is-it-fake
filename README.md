@@ -69,6 +69,14 @@ Alternatively, to persist your results to an alternative store you need to overr
 3. [COCO-SSD](https://github.com/tensorflow/tfjs-models/blob/master/coco-ssd/README.md)
 4. [Kaggle Models](https://www.kaggle.com/models?datatype=14102&publisher=google)
 
+## Machine Learning Explained
+
+1. [IBM: What are convolutional neural networks?](https://www.ibm.com/topics/convolutional-neural-networks)
+2. [Kaggle: Basic Terminologies of Convolutional Neural Networks](https://www.kaggle.com/discussions/general/463431)
+3. [National High Magnetic Field Laboratory: Convolution Kernels](https://micro.magnet.fsu.edu/primer/java/digitalimaging/processing/convolutionkernels/index.html)
+4. [Deeplizard: Max Pooling in Convolutional Neural Networks](https://deeplizard.com/learn/video/ZjM_XQa5s6s)
+5. [Govinda Dumane: Introduction to Convolutional Neural Network (CNN) using Tensorflow](https://towardsdatascience.com/introduction-to-convolutional-neural-network-cnn-de73f69c5b83)
+
 ## Tutorials
 
 1. [Classification Model On Custom Dataset Using Tensorflow.js Made Simple: Here's What You Need to Know | Garima Nisha](https://medium.com/analytics-vidhya/classification-model-on-custom-dataset-using-tensorflow-js-9458da5f2301)
