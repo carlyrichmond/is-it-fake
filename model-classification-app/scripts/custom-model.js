@@ -36,9 +36,9 @@ async function run() {
   const NUM_EPOCHS = 10;
 
   await model.fit(singleImageTensor, labelsTensor, {
-    batchSize: BATCH_SIZE,
-    epochs: NUM_EPOCHS,
-    shuffle: true,
+    batchSize: BATCH_SIZE, // Number of samples to work through before updating the internal model parameters
+    epochs: NUM_EPOCHS, // Number of passes through the dataset
+    shuffle: true, // Shuffle data before each pass
   });
 
   // Classify images

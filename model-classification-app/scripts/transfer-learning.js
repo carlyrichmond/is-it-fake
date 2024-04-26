@@ -50,9 +50,9 @@ async function run() {
   const labelsTensor = tf.tensor2d(labels);
 
   await myTransferMobileNetModel.fit(singleImageTensor, labelsTensor, {
-    shuffle: true,
-    batchSize: 5,
-    epochs: 10,
+    shuffle: true, // Shuffle data before each pass
+    batchSize: 5, // Number of samples to work through before updating the internal model parameters
+    epochs: 10, // Number of passes through the dataset
     callbacks: { onEpochEnd: logProgress },
   });
 
