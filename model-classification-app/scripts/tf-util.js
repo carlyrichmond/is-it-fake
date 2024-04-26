@@ -29,7 +29,7 @@ async function getTensorFromImage(imageUrl) {
         return decodedImage;
       });
     } catch (e) {
-      throw Error(`Unable to create tensor for image ${url}`);
+      throw Error(`Unable to create tensor for image ${imageUrl}`);
     }
   }
 

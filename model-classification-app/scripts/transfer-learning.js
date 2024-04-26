@@ -23,7 +23,7 @@ async function run() {
   const cakeTensors = await getTensorsForImageSet(cakesResponse);
 
   // Get a subset of the unsplash images for not cake images
-  const notCakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[0], 50);
+  const notCakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[1], 50);
   const notCakeTensors = await getTensorsForImageSet(notCakesResponse);
 
   // Process

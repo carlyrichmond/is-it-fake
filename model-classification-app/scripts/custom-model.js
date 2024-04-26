@@ -18,7 +18,7 @@ async function run() {
   const cakeTensors = await getTensorsForImageSet(cakesResponse);
 
   // Get a subset of the unsplash images for not cake images
-  const notCakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[0], 50);
+  const notCakesResponse = await getFirstNImagesByCategory(CLASS_NAMES[1], 50);
   const notCakeTensors = await getTensorsForImageSet(notCakesResponse);
 
   const images = cakeTensors.concat(notCakeTensors);
@@ -54,6 +54,8 @@ async function run() {
   labelsTensor.dispose();
   tf.dispose(cakeTensors);
   tf.dispose(notCakeTensors);
+
+  console.log('Classification complete!');
 }
 
 /* Functional implementation */
@@ -124,7 +126,7 @@ function createModel() {
 
   model.compile({
     optimizer: tf.train.adam(), // Stochastic Optimization method
-    loss: "categoricalCrossentropy", // Should this have been binaryCrossentropy?
+    loss: "binaryCrossentropy",
     metrics: ["accuracy"],
   });
 
