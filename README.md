@@ -6,6 +6,8 @@ This repo documents my exciting journey into learning machine learning practices
 
 ![](./slides/screenshots/game/game-cake-page.png)
 
+You can play the game and pit yourself against the models at [https://is-it-fake.netlify.app/](https://is-it-fake.netlify.app/)/
+
 ### Structure
 
 This repo contains two applications:
