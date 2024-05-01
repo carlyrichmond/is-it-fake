@@ -9,7 +9,7 @@ const { getResizedImageTensor, getTensorsForImageSet, IMAGE_HEIGHT, IMAGE_WIDTH 
 
 const CLASS_NAMES = ["cake", "not cake"];
 
-// Build transfer learning model
+// Build custom model
 run();
 
 async function run() {
