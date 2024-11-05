@@ -2,7 +2,7 @@
 
 ## Image Classification using TensorFlow.js and Elasticsearch
 
-This repo documents my exciting journey into learning machine learning practices for the web. It is featured in the talk of the same name at [Devoxx UK 2024](https://www.devoxx.co.uk/speaker-details/?id=4606).
+This repo documents my exciting journey into learning machine learning practices for the web. It is featured in the talk of the same name at [Devoxx UK 2024](https://www.devoxx.co.uk/speaker-details/?id=4606) and [HalfStack London 2024](https://halfstackconf.com/london#carly-richmond).
 
 ![](./slides/screenshots/game/game-cake-page.png)
 
