@@ -1,4 +1,4 @@
-import { Client } from '@elastic/elasticsearch-serverless';
+import { Client } from '@elastic/elasticsearch';
 
 const classificationsIndex = 'classifications';
 const userClassificationsIndex = 'user-classifications';

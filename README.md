@@ -12,7 +12,7 @@ You can play the game and pit yourself against the models at [https://is-it-fake
 
 This repo contains two applications:
 
-1. [Is it (F)ake?!](./cake-app/) game, located in the `cake-app` folder where players can guess if the image is cake or not cake. This application is written using [React](https://react.dev/), [Elasticsearch Serverless Node.js client](https://github.com/elastic/elasticsearch-serverless-js) and [Netlify functions](https://www.netlify.com/platform/core/functions/).
+1. [Is it (F)ake?!](./cake-app/) game, located in the `cake-app` folder where players can guess if the image is cake or not cake. This application is written using [React](https://react.dev/), [Elasticsearch Node.js client](https://github.com/elastic/elasticsearch-js) and [Netlify functions](https://www.netlify.com/platform/core/functions/).
 2. The [Model Classification](./model-classification-app/) application is written in vanilla JavaScript, HTML and CSS. It is present in the `model-playground` folder and contains several useful elements:
  * A sample webpage showing predictions generated using the COCO-SD and MobileNet model on a sample image.
  * The [`classify-images.js`](./model-classification-app/scripts/classify-images.js) script includes a Node.js implementation generating image classifications of a set of source images for MobileNet and COCO-SSD. These results are persisted in Elasticsearch.

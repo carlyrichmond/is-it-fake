@@ -1,4 +1,4 @@
-const { Client } = require("@elastic/elasticsearch-serverless");
+const { Client } = require("@elastic/elasticsearch");
 
 const esClient = new Client({
     cloud: { id: process.env.ELASTIC_CLOUD_ID },
