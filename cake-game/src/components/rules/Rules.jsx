@@ -4,7 +4,7 @@ import'./Rules.css';
 
 const GETTING_STARTED_STEPS = [
   {
-    message: "Classify the 10 provided images as quickly as you can.",
+    message: "Classify the provided images as quickly as you can.",
   },
   {
     message:
