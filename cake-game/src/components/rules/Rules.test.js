@@ -5,17 +5,17 @@ test.use({ viewport: { width: 500, height: 500 } });
 
 test('should work', async ({ mount }) => {
   const component = await mount(<Rules />);
-  await expect(component).toContainText('Classify the 10 provided images as quickly as you can.');
+  await expect(component).toContainText('Classify the provided images as quickly as you can.');
 });
  
 test(`[Rules Component]: Should render step 1`, async ({ mount }) => {
   const component = await mount(<Rules />);
-  await expect(component).toContainText('Classify the 10 provided images as quickly as you can.');
+  await expect(component).toContainText('Classify the provided images as quickly as you can.');
 });
 
 test(`[Rules Component]: Should render step 2`, async ({ mount }) => {
   const component = await mount(<Rules />);
-  await expect(component).toContainText('Classify the 10 provided images as quickly as you can.');
+  await expect(component).toContainText('Classify the provided images as quickly as you can.');
 
   const rulesStepMessage = component.getByTestId('rules-step-message');
   const nextStepButton = component.getByTestId('next-step-button');
@@ -25,7 +25,7 @@ test(`[Rules Component]: Should render step 2`, async ({ mount }) => {
 
 test(`[Rules Component]: Should render step 3 and restart button`, async ({ mount }) => {
   const component = await mount(<Rules />);
-  await expect(component).toContainText('Classify the 10 provided images as quickly as you can.');
+  await expect(component).toContainText('Classify the provided images as quickly as you can.');
 
   // Step 2
   const rulesStepMessage = component.getByTestId('rules-step-message');
@@ -42,7 +42,7 @@ test(`[Rules Component]: Should render step 3 and restart button`, async ({ moun
 
 test(`[Rules Component]: Should restart steps wizard`, async ({ mount }) => {
   const component = await mount(<Rules />);
-  await expect(component).toContainText('Classify the 10 provided images as quickly as you can.');
+  await expect(component).toContainText('Classify the provided images as quickly as you can.');
 
   // Steps 2 and 3
   const rulesStepMessage = component.getByTestId('rules-step-message');
@@ -57,5 +57,5 @@ test(`[Rules Component]: Should restart steps wizard`, async ({ mount }) => {
   expect(restartButton).toBeHidden();
   expect(nextStepButton).toBeVisible();
 
-  await expect(component).toContainText('Classify the 10 provided images as quickly as you can.');
+  await expect(component).toContainText('Classify the provided images as quickly as you can.');
 });
