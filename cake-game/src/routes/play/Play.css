@@ -8,17 +8,10 @@ section {
 }
 
 .classifier-image {
-    width: 90%;
-    height: auto;
+    height: 350px;
+    width: auto;
     display: block;
   }
-
-  /*@media screen and (min-width: 768px) {
-    section {
-        width: 80%;
-        margin: auto;
-    }
-  }*/
 
 p {
     font-weight: bold;
