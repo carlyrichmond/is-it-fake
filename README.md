@@ -25,6 +25,13 @@ See below for how to run the applications and tests.
 
 #### `cake-game`
 
+You need an Elasticsearch cluster to pull the data from. Access is granted using environment variables `ELASTIC_URL` and `ELASTIC_API_KEY`, as per the [.env-example](./.env-example) file at the top of the project:
+
+```zsh
+ELASTIC_URL=https://my-elastic-deployment:port
+ELASTIC_API_KEY=my-api-key
+```
+
 Start the application on `http://localhost:5173/`, ensuring you have [Netlify CLI](https://docs.netlify.com/cli/get-started/) installed:
 
 ```
