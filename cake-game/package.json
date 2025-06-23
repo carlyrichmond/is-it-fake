@@ -22,7 +22,7 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "@jest/globals": "^29.7.0",
+    "@jest/globals": "^30.0.2",
     "@types/node": "^20.12.7",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
