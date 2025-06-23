@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "^9.0.2",
-    "@netlify/functions": "^2.6.0",
+    "@netlify/functions": "^4.1.6",
     "@playwright/experimental-ct-react": "^1.53.1",
     "axios": "^1.10.0",
     "canvas-confetti": "^1.9.3",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^30.0.2",
-    "@types/node": "^20.19.1",
+    "@types/node": "^24.0.3",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
