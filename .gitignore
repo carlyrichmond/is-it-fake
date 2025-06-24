@@ -135,3 +135,6 @@ dist
 cake-app/playwright-report/index.html
 model-classification-app/.envrc
 cake-game/.envrc
+
+# Model export and weights
+model-classification-app/model/*
