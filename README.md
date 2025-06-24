@@ -59,13 +59,24 @@ npm install
 npm run start
 ```
 
-Each of the scripts for performing different types of image classification should be executed from the `model-classification-app` folder. To persist the classifications please ensure you have a simple Elasticsearch cluster available to persist the results, with environment variables `ELASTIC_CLOUD_ID` and `ELASTIC_API_KEY` exposed to your service.
+Each of the scripts for performing different types of image classification should be executed from the `model-classification-app` folder. To persist the classifications please ensure you have a simple Elasticsearch cluster available to persist the results, with environment variables `ELASTIC_URL`, `ELASTIC_API_KEY` for Elasticsearch and `UNSPLASH_ACCESS_KEY` for your Unsplash API key exposed to your service as per the [.env-example](./.env-example) file as the top of the project.
 
-Once the Elasticsearch prerequisite has been met you can run the scripts in turn similar to the below:
+```zsh
+ELASTIC_URL=https://my-elastic-deployment:port
+ELASTIC_API_KEY=my-api-key
+UNSPLASH_ACCESS_KEY=my-access-unsplash-key
+```
+
+Once the Elasticsearch and Unsplash API prerequisite has been met you can run the scripts in turn similar to the below:
 
 ```
 cd ./model-classification-app
 npm install
+
+# Node 22 required for TensorFlow (as of 2025)
+nvm install v22.1.0
+nvm use v22.1.0
+
 node scripts/classify-images.js
 node scripts/custom-model.js
 node scripts/transfer-learning.js
