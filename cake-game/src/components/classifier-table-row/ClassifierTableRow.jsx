@@ -35,7 +35,7 @@ function ClassifierTableRow(props) {
         <th>{ getMatchIndicator() }</th>
         <th className="classification">{ props.result.expected_category }</th>
         <th className="classification">{ props.result.user_category }</th>
-        <th className="classification">{ formatClassificationCollections(props.result.models.mobilenet_classifier, 'className') }</th>
+        <th className="classification">{ formatClassificationCollections(props.result.models?.mobilenet_classifier, 'className') }</th>
         <th className="classification">{ formatClassificationCollections(props.result.models?.coco_ssd_predictions, 'class') }</th>
         <th className="classification">{ formatClassificationString(props.result.models?.my_transfer_model_classifier?.category) }</th>
         <th className="classification">{ formatClassificationString(props.result.models?.my_model_classifier.category) }</th>
