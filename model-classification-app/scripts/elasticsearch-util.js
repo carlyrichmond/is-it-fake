@@ -1,7 +1,7 @@
 const { Client } = require("@elastic/elasticsearch");
 
 const esClient = new Client({
-    cloud: { id: process.env.ELASTIC_CLOUD_ID },
+    node: process.env.ELASTIC_URL,
     auth: { apiKey: process.env.ELASTIC_API_KEY },
   });
 

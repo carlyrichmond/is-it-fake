@@ -38,14 +38,16 @@ async function run() {
   });
 
   // Reset index (uncomment if regenerating)
-  //clearIndex();
+  //await clearIndex();
 
-  getCakeImages();
+  /*await getCakeImages();
   const cakeImageUrls = loadCakeImageUrls();
-  await classifyImages('cake', cakeImageUrls);
+  await classifyImages('cake', cakeImageUrls);*/
 
   const objectImageUrls = await getUnsplashImageUrls();
   await classifyImages("not cake", objectImageUrls);
+
+  console.log("Classification complete");
 }
 
 /* Helper functions */
