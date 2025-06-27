@@ -79,6 +79,7 @@ nvm use v22.1.0
 
 node scripts/classify-images.js
 node scripts/custom-model.js
+node scripts/grayscale-custom-model.js
 node scripts/transfer-learning.js
 ```
 
@@ -128,5 +129,12 @@ Thanks go to the fantastic bakers out there making hyper-realistic cakes that in
 5. https://www.thesugardreams.net
 6. https://juliemcallistercakes.com
 7. https://www.thesweetstopofrva.com
+8. https://apriljulian.com/portfolio
+9. https://cakeyall.com/
+10. https://www.layerscakestudio.com/
+11. https://www.apinchofspirit.com/gallery
+12. https://www.mycakebuds.com
+13. https://mannandcobakeshop.com/
+14. https://www.thesculptedslice.com/
 
 Thanks also to [Unsplash](https://unsplash.com/) and their amazing contributors who allowed me to find non-cake images through the [JavaScript wrapper unsplash-js](https://www.npmjs.com/package/unsplash-js) of the [Unsplash API](https://unsplash.com/documentation). 

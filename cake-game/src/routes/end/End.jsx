@@ -73,6 +73,7 @@ function End() {
                 <th>COCO-SSD</th>
                 <th>MobileNet Transfer Classifier</th>
                 <th>Carly Model</th>
+                <th>Carly Model (Grayscale)</th>
               </tr>
             </thead>
             <tbody>

@@ -40,9 +40,9 @@ async function run() {
   // Reset index (uncomment if regenerating)
   //await clearIndex();
 
-  /*await getCakeImages();
-  const cakeImageUrls = loadCakeImageUrls();
-  await classifyImages('cake', cakeImageUrls);*/
+  //await getCakeImages();
+  //const cakeImageUrls = loadCakeImageUrls();
+  //await classifyImages('cake', cakeImageUrls);
 
   const objectImageUrls = await getUnsplashImageUrls();
   await classifyImages("not cake", objectImageUrls);
@@ -65,7 +65,7 @@ async function getCakeImages() {
     try {
       await page.goto(site.url);
       const currentPageImages = await page
-        .locator("img")
+        .getByRole("img")
         .evaluateAll((images) => {
           return images
             .map((image) => {

@@ -39,6 +39,7 @@ function ClassifierTableRow(props) {
         <th className="classification">{ formatClassificationCollections(props.result.models?.coco_ssd_predictions, 'class') }</th>
         <th className="classification">{ formatClassificationString(props.result.models?.my_transfer_model_classifier?.category) }</th>
         <th className="classification">{ formatClassificationString(props.result.models?.my_model_classifier.category) }</th>
+        <th className="classification">{ formatClassificationString(props.result.models?.my_grayscale_model_classifier?.category) }</th>
       </tr>
     </>
   );

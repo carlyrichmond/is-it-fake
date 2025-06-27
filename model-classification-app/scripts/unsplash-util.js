@@ -5,7 +5,7 @@ const unsplash = createApi({
   accessKey: process.env.UNSPLASH_ACCESS_KEY
 });
 
-const queries = [ "cup", "vase", "candle", "bottle", "plate", "tray", "thimble", "flowerpot", "dog", "cat", "hat", "book", "food", "reptile", "toy", "shoe", "bag", "purse" ];
+const queries = [ "cup", "vase", "candle", "bottle", "plate", "tray", "thimble", "flowerpot", "dog", "cat", "hat", "book", "food", "reptile", "toy", "shoe", "bag", "purse", "guitars", "cars", "burgers", "cleaning products", "lizards", "football", "pineapple", "oranges", "teddy", "cheese", "game boy" ];
 
 async function getUnsplashImageUrls() {
 

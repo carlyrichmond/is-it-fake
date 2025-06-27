@@ -42,6 +42,16 @@ async function getTensorFromImage(imageUrl) {
   
     return tensors;
   }
+
+  async function getGrayscaleTensorsForImageSet(results) {
+    let tensors = [];
+    for (result of results.hits.hits) {
+      const features = await getGrayscaleImageTensor(result._source.image_url);
+      tensors.push(features);
+    }
+  
+    return tensors;
+  }
   
   async function getResizedImageTensor(imageUrl) {
     const decodedImage = await getTensorFromImage(imageUrl);
@@ -52,4 +62,15 @@ async function getTensorFromImage(imageUrl) {
     return resizedImage;
   }
 
-module.exports = { getResizedImageTensor, getTensorFromImage, getTensorsForImageSet, IMAGE_HEIGHT, IMAGE_WIDTH };
+  async function getGrayscaleImageTensor(imageUrl) {
+    const decodedImage = await getTensorFromImage(imageUrl);
+    const resizedImage = tf.image.resizeBilinear(decodedImage, [
+      IMAGE_WIDTH,
+      IMAGE_HEIGHT
+    ], true)
+    const grayscaleImage = tf.image.rgbToGrayscale(resizedImage);
+    
+    return grayscaleImage;
+  }
+
+module.exports = { getGrayscaleImageTensor, getResizedImageTensor, getTensorFromImage, getTensorsForImageSet, getGrayscaleTensorsForImageSet, IMAGE_HEIGHT, IMAGE_WIDTH };

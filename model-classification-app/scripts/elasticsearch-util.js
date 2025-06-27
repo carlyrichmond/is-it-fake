@@ -85,6 +85,29 @@ async function updateDocumentWithClassification(documentId, category, prediction
   }
 }
 
+async function updateDocumentWithGrayscaleClassification(documentId, category, predictions) {
+  const myGrayscaleModelClassifier = { 
+    category:  category,
+    predictions: predictions
+  };
+  try {
+    const response = await esClient.update(
+      {
+        index: index,
+        id: documentId,
+        script: {
+          lang: 'painless',
+          source: `ctx._source.my_grayscale_model_classifier = params.classification`,
+          params: { classification: myGrayscaleModelClassifier }
+        }
+      }
+    );
+    console.log(response);
+  } catch(e) {
+    console.log(e);
+  }
+}
+
 async function updateDocumentWithTransferClassification(documentId, category, predictions) {
   const myModelClassifier = { 
     category:  category,
@@ -107,4 +130,4 @@ async function updateDocumentWithTransferClassification(documentId, category, pr
   }
 }
 
-module.exports = { esClient, clearIndex, addClassifiersToIndex, getAllImages, getFirstNImagesByCategory, updateDocumentWithClassification, updateDocumentWithTransferClassification };
+module.exports = { esClient, clearIndex, addClassifiersToIndex, getAllImages, getFirstNImagesByCategory, updateDocumentWithClassification, updateDocumentWithGrayscaleClassification, updateDocumentWithTransferClassification };
