@@ -39,10 +39,10 @@ async function run() {
 
   // Reset index (uncomment if regenerating)
   //await clearIndex();
-
-  //await getCakeImages();
-  //const cakeImageUrls = loadCakeImageUrls();
-  //await classifyImages('cake', cakeImageUrls);
+   
+  await getCakeImages();
+  const cakeImageUrls = loadCakeImageUrls();
+  await classifyImages('cake', cakeImageUrls);
 
   const objectImageUrls = await getUnsplashImageUrls();
   await classifyImages("not cake", objectImageUrls);
