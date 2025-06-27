@@ -17,8 +17,6 @@ export async function handler(event, context) {
       return document._source;
     });
 
-    // console.log(`RESULTS: ${results}`)
-
     return generateResponse(200, results);
   } catch (e) {
     console.log(e);
